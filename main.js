@@ -1,35 +1,41 @@
+const tabPlayer = [[null,null,null], [null,null,null],[null,null,null]];
+const tabBot = [[null,null,null], [null,null,null],[null,null,null]];
+
 const jogadorAtual ='user';
 
-const dadoAtual = 0;
+const dadoValor = 0;
 
+//retorna numero aleatorio entre 1 e 6
 function rolarDado(){
-    dadoAtual = Math.floor(Math.random() * 6) + 1;
-    return dadoAtual;
+    dadoValor = Math.floor(Math.random() * 6) + 1;
+    return dadoValor;
 }
 
 function trocaJogador(){
+    
     if(jogadorAtual== user){
-        jogadaPlayer();
         jogadorAtual = 'bot';
         return jogadorAtual
     } else {
-        jogadaBot();
         jogadorAtual = 'user';
         return jogadorAtual
     }
 }
 
-function adicionaDadoNaColuna(){
-
+function adicionaDadoNaColuna(coluna, dadoValor){
+    if(tabPlayer[coluna] == null){
+        
+    }
 }
 
-function calculaSoma(){
+function calculaPontos(){
 
 }
 
 function jogadaPlayer(){
     rolarDado();
     adicionaDadoNaColuna();
+    calculaPontos();
     testeFimDeJogo();
     trocaJogador();
 }
