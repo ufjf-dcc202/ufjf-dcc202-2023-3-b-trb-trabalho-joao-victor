@@ -23,9 +23,7 @@ function trocaJogador(){
 }
 
 function adicionaDadoNaColuna(coluna, dadoValor){
-    if(tabPlayer[coluna] == null){
-        
-    }
+    
 }
 
 function calculaPontos(){
@@ -41,8 +39,9 @@ function jogadaPlayer(){
 }
 
 function jogadaBot(){
-    rolarDado();
+    let dado = rolarDado();
     let coluna = Math.floor(Math.random()* 9) + 1;
+    adicionaDadoNaColuna(coluna, dado);
+
 }
 
-export { rolarDado};
