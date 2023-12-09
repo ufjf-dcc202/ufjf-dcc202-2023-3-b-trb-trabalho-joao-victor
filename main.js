@@ -12,7 +12,6 @@ function rolarDado(){
 }
 
 function trocaJogador(){
-    
     if(jogadorAtual== user){
         jogadorAtual = 'bot';
         return jogadorAtual
@@ -26,7 +25,7 @@ function adicionaDadoNaColuna(coluna, dadoValor){
     
 }
 
-function calculaPontos(){
+function calculaPontos(tablPlayer, tabBot){
 
 }
 
