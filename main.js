@@ -10,9 +10,9 @@ function rolarDado(){
     dadoValor = Math.floor(Math.random() * 6) + 1;
     return dadoValor;
 }
-
+//função para trocar a vez do jogador para o bot
 function trocaJogador(){
-    if(jogadorAtual== user){
+    if(jogadorAtual === user){
         jogadorAtual = 'bot';
         return jogadorAtual
     } else {
@@ -25,22 +25,10 @@ function adicionaDadoNaColuna(coluna, dadoValor){
     
 }
 
-function calculaPontos(tablPlayer, tabBot){
+function calculaPontos(tabPlayer, tabBot){
 
 }
 
-function jogadaPlayer(){
-    rolarDado();
-    adicionaDadoNaColuna();
-    calculaPontos();
-    testeFimDeJogo();
-    trocaJogador();
-}
 
-function jogadaBot(){
-    let dado = rolarDado();
-    let coluna = Math.floor(Math.random()* 9) + 1;
-    adicionaDadoNaColuna(coluna, dado);
 
-}
 
