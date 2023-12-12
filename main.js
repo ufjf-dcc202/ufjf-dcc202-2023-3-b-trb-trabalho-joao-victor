@@ -7,8 +7,14 @@ function getTabuleiro(){
     return structuredClone(tabuleiro);
 }
 
-const jogadorAtual ='user';
-const dadoValor = 0;
+document.btnPlay.addEventListener('click', iniciaJogo());
+
+function iniciaJogo(){
+    let tabuleiro = getTabuleiro();
+    let jogadorAtual = 'user';
+    let dadoValor = rolarDado();
+}
+
 
 //retorna numero aleatorio entre 1 e 6
 function rolarDado(){
@@ -17,7 +23,7 @@ function rolarDado(){
 }
 
 //função para trocar a vez do jogador para o bot e vice e versa
-function trocaJogador(){
+function trocaJogador(jogadorAtual){
     if(jogadorAtual === user){
         jogadorAtual = 'bot';
         return jogadorAtual
@@ -54,7 +60,7 @@ function verificaJogoTerminou(){
             }
         }
     }
-
+    
     for(let coluna of tabuleiro['bot']){
         for(let posicao of coluna){
             if(posicao === null){
@@ -73,11 +79,11 @@ function verificaVencedor(){
     } else if(pontosBot > pontosPlayer){
         return vencedor = 'bot';
     } else {
-        return 'Empate!';
+        return vencedor = 'empate';
     }
 }
 
-function eliminaDadosColunaAdversario(coluna, dadoValor){
+function eliminaDadosIguais(coluna, dadoValor){
     let adversario = jogadorAtual === 'user' ? 'bot' : 'user';
     for(let i = 0; i < tabuleiro[adversario][coluna].length; i++){
         if(tabuleiro[adversario][coluna][i] === dadoValor){
