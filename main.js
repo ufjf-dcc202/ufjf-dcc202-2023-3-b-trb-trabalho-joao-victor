@@ -9,6 +9,7 @@ function getTabuleiro(){
 
 document.btnPlay.addEventListener('click', iniciaJogo());
 
+//função que inicia o jogo
 function iniciaJogo(){
     let tabuleiro = getTabuleiro();
     let jogadorAtual = 'user';
@@ -51,7 +52,7 @@ function adicionaDadoNaColuna(coluna, dadoValor){
         }
     }
 }
-
+//função que verifica se o jogo terminou
 function verificaJogoTerminou(){
     for(let coluna of tabuleiro['player']){
         for(let posicao of coluna){
@@ -69,8 +70,9 @@ function verificaJogoTerminou(){
         }
     }
     return true;
+    verificaVencedor();
 }
-
+//função que verifica o vencedor
 function verificaVencedor(){
     let {pontosPlayer, pontosBot} = calculaPontos(tabuleiro['player'], tabuleiro['bot']);
     let vencedor;
@@ -82,7 +84,7 @@ function verificaVencedor(){
         return vencedor = 'empate';
     }
 }
-
+//função que elimina dados iguais do tabuleiro do jogador adversario;
 function eliminaDadosIguais(coluna, dadoValor){
     let adversario = jogadorAtual === 'user' ? 'bot' : 'user';
     for(let i = 0; i < tabuleiro[adversario][coluna].length; i++){
@@ -90,6 +92,29 @@ function eliminaDadosIguais(coluna, dadoValor){
             tabuleiro[adversario][coluna][i] = null;
         }
     }
+}
+
+//função que calcula os pontos do jogador e do bot
+function calculaPontuacaoColuna(tabuleiro){
+    let pontuacao = {};
+
+    for(let i = 0; i < tabuleiro.length; i++){
+        let contagem = {};
+        for(let dado of tabuleiro[i]){
+            if(dado !== null){
+                contagem[dado] = (contagem[dado] || 0) + 1;
+            }
+        }
+
+        pontuacao[i] = 0;
+        for(let dado in contagem){
+            if(contagem[dado] >= 2){
+                pontuacao[i] += dado * contagem[dado];
+            }
+        }
+    }
+
+    return pontuacao;
 }
 
 
